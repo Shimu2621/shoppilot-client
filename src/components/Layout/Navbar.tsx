@@ -27,7 +27,7 @@ import {
   LayoutDashboard,
   BadgePercent,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import { logout } from "@/redux/features/auth/authSlice";
 import { CategoryDropdown } from "./CategoryDropdown";
 import {
@@ -156,9 +156,7 @@ export function Navbar({
 
   return (
     <>
-      <header
-       className="border-b"
-      >
+      <header className="border-b">
         <div className="container mx-auto px-2 sm:px-4">
           <div className="flex h-14 sm:h-16 items-center justify-between gap-2 sm:gap-2">
             {/* Logo */}
@@ -166,19 +164,27 @@ export function Navbar({
               href="/"
               className="flex items-center space-x-2 flex-shrink-0"
             >
-              <div className="h-7 sm:h-8 w-7 sm:w-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md">
+              {/* <div className="h-7 sm:h-8 w-7 sm:w-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md">
                 <span className="text-primary-foreground font-bold text-base sm:text-lg">
-                  D
+                  N
+                </span>
+              </div> */}
+              <div className="h-8 w-8 bg-primary rounded-md flex items-center justify-center bg-gradient-to-r from-blue-800 to-rose-600">
+                <span className="text-primary-foreground font-bold text-lg ">
+                  S
                 </span>
               </div>
-              <span
+              {/* <span
                 className={`font-bold text-lg sm:text-xl hidden lg:flex ${
                   isScrolled
                     ? "bg-gradient-to-r from-white to-accent"
                     : "bg-gradient-to-r from-primary to-accent"
                 } bg-clip-text text-transparent`}
               >
-                DeviceMart
+                NexCart
+              </span> */}
+              <span className="font-serif font-semibold text-xl text-rose-600">
+                ShopPilot
               </span>
             </Link>
 

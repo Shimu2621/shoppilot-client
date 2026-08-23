@@ -9,8 +9,8 @@ import { FeaturedProducts } from "@/components/Sections/FeaturedProduct";
 import HeroSection from "@/components/Sections/HeroSection";
 // import { HeroSection } from "@/components/Sections/HeroSection"
 import { NewsletterSection } from "@/components/Sections/NewsletterSection";
-
-import { StatsSection } from "@/components/Sections/StatsSection";
+import { SpecialOfferSection } from "@/components/Sections/SpecialOfferSection";
+// import { StatsSection } from "@/components/Sections/StatsSection";
 import { TestimonialsSection } from "@/components/Sections/TestimonialSection";
 
 export default function HomePage() {
@@ -22,12 +22,12 @@ export default function HomePage() {
       <CategoriesSection />
       <BasicServicesSection />
       <FeaturedProducts />
+      <SpecialOfferSection />
       <AboutUsSection />
-
-      <StatsSection />
+      {/* <StatsSection /> */}
+      <NewsletterSection />
       <TestimonialsSection />
       {/* <BlogSection /> */}
-      <NewsletterSection />
       <ContactSection />
     </div>
   );

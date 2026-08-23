@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { ShinyButton } from "../magicui/shiny-button";
 import { AuroraText } from "../magicui/aurora-text";
-import Offer from "../../app/assets/offer.png";
+import Offer from "../../assets/offer.png";
 import Image from "next/image";
 
 export function SpecialOfferSection() {

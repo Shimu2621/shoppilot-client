@@ -171,7 +171,7 @@ export function Navbar({
               </div> */}
               <div className="h-8 w-8 bg-primary rounded-md flex items-center justify-center bg-gradient-to-r from-blue-800 to-rose-600">
                 <span className="text-primary-foreground font-bold text-lg ">
-                  S
+                  N
                 </span>
               </div>
               {/* <span
@@ -184,7 +184,7 @@ export function Navbar({
                 NexCart
               </span> */}
               <span className="font-serif font-semibold text-xl text-rose-600">
-                ShopPilot
+                NexCart
               </span>
             </Link>
 

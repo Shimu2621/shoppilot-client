@@ -158,9 +158,7 @@ export function BasicServicesSection() {
             </ShinyButton>
             <h2 className="text-4xl lg:text-5xl text-center font-bold text-forground mb-4">
               What Can{" "}
-              <AuroraText className="text-blue-800 italic">
-                ShopFinity
-              </AuroraText>{" "}
+              <AuroraText className="text-blue-800 italic">NexCart</AuroraText>{" "}
               <br /> Do For You?
             </h2>
             <p className="text-center mx-auto text-muted-foreground max-w-2xl mb-8">

@@ -150,7 +150,7 @@ export function AboutUsSection() {
             <br /> in Online Shopping
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            At ShopFinity, we believe shopping should be simple, secure, and
+            At NexCart, we believe shopping should be simple, secure, and
             enjoyable. Our mission is to bring you high-quality products at the
             best prices, paired with excellent customer services.
           </p>

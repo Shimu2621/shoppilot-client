@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { useUserLoginMutation } from "@/redux/api/user/userApi"
-import { useRouter } from "next/navigation"
-import { toast } from "sonner"
-import Link from "next/link"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import type React from "react";
+import { useState } from "react";
+import { useUserLoginMutation } from "@/redux/api/user/userApi";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Form,
   FormControl,
@@ -20,16 +20,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Home } from 'lucide-react'
-import loginAnimation from "@/assets/lottie/Login.json"
-import dynamic from "next/dynamic"
-import { ModeToggle } from "@/components/ModeToggle/ModeToggle"
-import { useAppDispatch } from "@/redux/hooks/hooks"
-import { login } from "@/redux/features/auth/authSlice"
+} from "@/components/ui/form";
+import { Eye, EyeOff, Mail, Lock, ArrowRight, Home } from "lucide-react";
+import loginAnimation from "@/assets/lottie/Login.json";
+import dynamic from "next/dynamic";
+import { ModeToggle } from "@/components/ModeToggle/ModeToggle";
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { login } from "@/redux/features/auth/authSlice";
 
 // Dynamically import Lottie to avoid SSR issues
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false })
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 // Zod schema for sign-in validation
 const signInSchema = z.object({
@@ -41,15 +41,15 @@ const signInSchema = z.object({
     .string()
     .min(1, "Password is required")
     .min(6, "Password must be at least 6 characters"),
-})
+});
 
-type SignInFormValues = z.infer<typeof signInSchema>
+type SignInFormValues = z.infer<typeof signInSchema>;
 
 export default function SignInPage() {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
-  const [userLogin, { isLoading }] = useUserLoginMutation()
-  const router = useRouter()
+  const [userLogin, { isLoading }] = useUserLoginMutation();
+  const router = useRouter();
 
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(signInSchema),
@@ -57,23 +57,23 @@ export default function SignInPage() {
       email: "",
       password: "",
     },
-  })
+  });
 
   const onSubmit = async (data: SignInFormValues) => {
     try {
-      const res = await userLogin(data).unwrap()
+      const res = await userLogin(data).unwrap();
       if (res.data.accessToken) {
-        localStorage.setItem("accessToken", res.data.accessToken)
+        localStorage.setItem("accessToken", res.data.accessToken);
         dispatch(login({ user: res.data.user, token: res.data.accessToken }));
-        toast.success("Login successful!")
-        router.push("/")
+        toast.success("Login successful!");
+        router.push("/");
       } else {
-        toast.error(res.message || "Login failed.")
+        toast.error(res.message || "Login failed.");
       }
     } catch (error: any) {
-      toast.error(error.data?.message || "An unexpected error occurred.")
+      toast.error(error.data?.message || "An unexpected error occurred.");
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background flex items-center justify-center p-4 relative overflow-hidden">
@@ -90,7 +90,7 @@ export default function SignInPage() {
             <span className="text-primary-foreground font-bold text-lg">D</span>
           </div>
           <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            DeviceMart
+            NexCart
           </span>
         </Link>
         <div className="flex items-center space-x-4">
@@ -110,7 +110,12 @@ export default function SignInPage() {
           <div className="relative">
             <div className="w-96 h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-primary/20">
               <div className="w-80 h-80">
-                <Lottie animationData={loginAnimation} loop={true} autoplay={true} className="w-full h-full" />
+                <Lottie
+                  animationData={loginAnimation}
+                  loop={true}
+                  autoplay={true}
+                  className="w-full h-full"
+                />
               </div>
             </div>
             {/* Decorative elements */}
@@ -123,7 +128,8 @@ export default function SignInPage() {
               Welcome Back!
             </h1>
             <p className="text-lg text-muted-foreground max-w-md">
-              Sign in to your account and continue your amazing shopping journey with us.
+              Sign in to your account and continue your amazing shopping journey
+              with us.
             </p>
             <div className="flex items-center justify-center space-x-2">
               <Badge variant="outline" className="text-xs">
@@ -144,12 +150,17 @@ export default function SignInPage() {
                 <Lock className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
-              <p className="text-muted-foreground">Enter your credentials to access your account</p>
+              <p className="text-muted-foreground">
+                Enter your credentials to access your account
+              </p>
             </CardHeader>
 
             <CardContent className="space-y-6">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   {/* Email Field */}
                   <FormField
                     control={form.control}
@@ -194,7 +205,11 @@ export default function SignInPage() {
                               onClick={() => setShowPassword(!showPassword)}
                               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                             >
-                              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                              {showPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                              ) : (
+                                <Eye className="h-4 w-4" />
+                              )}
                             </button>
                           </div>
                         </FormControl>
@@ -206,10 +221,16 @@ export default function SignInPage() {
                   {/* Remember Me & Forgot Password */}
                   <div className="flex items-center justify-between">
                     <label className="flex items-center space-x-2 cursor-pointer">
-                      <input type="checkbox" className="rounded border-gray-300" />
+                      <input
+                        type="checkbox"
+                        className="rounded border-gray-300"
+                      />
                       <span className="text-sm">Remember me</span>
                     </label>
-                    <Link href="/forgot-password" className="text-sm text-primary hover:underline">
+                    <Link
+                      href="/forgot-password"
+                      className="text-sm text-primary hover:underline"
+                    >
                       Forgot password?
                     </Link>
                   </div>
@@ -239,7 +260,10 @@ export default function SignInPage() {
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">
                   Don&apos;t have an account?{" "}
-                  <Link href="/signup" className="text-primary hover:underline font-medium">
+                  <Link
+                    href="/signup"
+                    className="text-primary hover:underline font-medium"
+                  >
                     Sign up here
                   </Link>
                 </p>
@@ -249,5 +273,5 @@ export default function SignInPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

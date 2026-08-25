@@ -312,17 +312,19 @@ export function Navbar({
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative group p-1 sm:p-2 mr-0 hidden lg:flex"
+                className="relative group p-1 sm:p-2 hidden lg:flex rounded-full hover:bg-rose-50 dark:hover:bg-rose-950/30"
                 onClick={handleWishlistClick}
               >
-                <Heart className="h-4 sm:h-5 w-4 sm:w-5 transition-colors group-hover:text-primary" />
-                <span className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-[0.6rem] sm:text-xs flex items-center justify-center shadow-md">
+                <Heart
+                  className="h-4 sm:h-5 w-4 sm:w-5  transition-all duration-300 group-hover:text-rose-600 group-hover:scale-110"
+                  strokeWidth={2}
+                />
+
+                <span className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 rounded-full bg-rose-700 text-white text-[0.6rem] sm:text-xs flex items-center justify-center shadow-md">
                   {user?.role === "ADMIN" ? (
                     0
                   ) : (
-                    <span>
-                      {!user ? 0 : <span>{wishlist?.data.length}</span>}
-                    </span>
+                    <span>{!user ? 0 : wishlist?.data.length}</span>
                   )}
                 </span>
               </Button>
@@ -331,20 +333,20 @@ export function Navbar({
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative group p-1 sm:p-2 hidden lg:flex"
+                className="relative group p-1 sm:p-2 hidden lg:flex rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/30"
                 onClick={handleCartClick}
               >
-                <ShoppingCart className="h-4 sm:h-5 w-4 sm:w-5 transition-colors group-hover:text-primary" />
-                <span className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 rounded-full bg-gradient-to-r from-accent to-accent/80 text-accent-foreground text-[0.6rem] sm:text-xs flex items-center justify-center shadow-md">
+                <ShoppingCart
+                  className="h-4 sm:h-5 w-4 sm:w-5 text-blue-600 transition-all duration-300 group-hover:text-blue-700 group-hover:scale-110"
+                  strokeWidth={2}
+                />
+
+                <span className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 rounded-full bg-blue-600 text-white text-[0.6rem] sm:text-xs flex items-center justify-center shadow-md">
                   {user?.role === "ADMIN" ? (
                     0
                   ) : (
                     <span>
-                      {!user ? (
-                        0
-                      ) : (
-                        <span>{cartData?.data[0]?.items?.length}</span>
-                      )}
+                      {!user ? 0 : cartData?.data[0]?.items?.length || 0}
                     </span>
                   )}
                 </span>
@@ -415,9 +417,13 @@ export function Navbar({
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="group p-1 sm:p-2 cursor-pointer"
+                    className="group p-1 sm:p-2 cursor-pointer rounded-full hover:bg-violet-50 dark:hover:bg-violet-950/30"
                   >
-                    <User className="h-4 sm:h-5 w-4 sm:w-5 transition-colors group-hover:text-primary" />
+                    <User
+                      className="h-4 sm:h-5 w-4 sm:w-5 text-violet-600 transition-all duration-300 group-hover:text-violet-700 group-hover:scale-110"
+                      strokeWidth={2}
+                    />
+                    {/* <User className="h-4 sm:h-5 w-4 sm:w-5 transition-colors group-hover:text-primary" /> */}
                   </Button>
                 </Link>
               )}

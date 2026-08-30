@@ -21,6 +21,20 @@ const CategoriesSection = () => {
 
   const categoryList = categories?.data || [];
 
+  const iconStyles = [
+    "bg-rose-100 dark:bg-rose-500/10",
+    "bg-purple-100 dark:bg-purple-500/10",
+    "bg-pink-100 dark:bg-pink-500/10",
+    "bg-pink-100 dark:bg-pink-500/10",
+    "bg-blue-100 dark:bg-blue-500/10",
+    "bg-yellow-100 dark:bg-yellow-500/10",
+    "bg-pink-100 dark:bg-pink-500/10",
+    "bg-green-100 dark:bg-green-500/10",
+    "bg-blue-100 dark:bg-blue-500/10",
+  ];
+
+  // https://res.cloudinary.com/b1ar0fxi/image/upload/v1786665066/46-462733_tv-clipart-purple-tv-icon-png.jpg
+
   if (!isMounted || isLoading) {
     return (
       <section
@@ -88,13 +102,27 @@ const CategoriesSection = () => {
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <CardContent className="p-2 text-center">
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <Image
                       src={category.icon!}
                       alt={category.name}
                       width={64}
                       height={64}
                       className="inline-flex items-center justify-center w-10 h-10 dark:invert"
+                    />
+                  </div> */}
+
+                  <div
+                    className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110 ${
+                      iconStyles[index % iconStyles.length]
+                    }`}
+                  >
+                    <Image
+                      src={category.icon!}
+                      alt={category.name}
+                      width={40}
+                      height={40}
+                      className="h-8 w-8 object-contain"
                     />
                   </div>
 

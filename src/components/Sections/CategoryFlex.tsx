@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const CategoryFlex = () => {
-  const { data: categories, isLoading } = useGetAllCategoriesQuery({});
+  const { data: categories, isLoading } = useGetAllCategoriesQuery();
   const categoryList: ICategory[] = categories?.data || [];
 
   if (isLoading) {
@@ -34,7 +34,7 @@ const CategoryFlex = () => {
                 href={`/category/${category.slug}~${category.id}`}
                 className={cn(
                   "text-sm font-medium text-gray-700 hover:text-primary transition-colors dark:text-gray-200 dark:hover:text-primary",
-                  "px-3 py-2 rounded-md hover:bg-muted dark:hover:bg-gray-700"
+                  "px-3 py-2 rounded-md hover:bg-muted dark:hover:bg-gray-700",
                 )}
               >
                 {category.name}
@@ -47,7 +47,7 @@ const CategoryFlex = () => {
                     "absolute left-0 mt-1 w-64 bg-white border border-gray-200 rounded-md shadow-lg",
                     "dark:bg-gray-800 dark:border-gray-700",
                     "opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200",
-                    "z-[1000] pointer-events-none group-hover:pointer-events-auto"
+                    "z-[1000] pointer-events-none group-hover:pointer-events-auto",
                   )}
                 >
                   <ul className="py-2">
